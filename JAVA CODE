@@ -1,0 +1,117 @@
+import java.util.Scanner;
+class PERSON{
+    //properties of PERSON class.
+    protected String firstName;
+    protected String lastName;
+    protected int idNumber;
+    //Constructor.
+    PERSON(String firstName, String lastName, int idNumber){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.idNumber = idNumber;
+    }
+    //Printing all accepted details.
+    public void printPERSON(){
+        System.out.println("=====================================================================================");
+        System.out.println("                              V.S.B. ENGINEERING COLLEGE                              ");
+        System.out.println("        "+"("+"Approved by AICTE, New Delhi and Affiliated to Anna University Chennai"+")"  );
+        System.out.println("            NBA Accredited Courses, NAAC Accredited & ISO Certified Institution       ");
+        System.out.println("                          KARUDAYAMPALAYAM PO.KARUR-639 111                           ");
+        System.out.println("                      Phone : 99944 96212, 82200 80832, 82705 96212                   ");
+        System.out.println("--------------------------------"+"("+"PLACE FOR PLACEMENT"+")"+"--------------------------------");
+        System.out.println("                                                                                  ");
+        System.out.println("                                 END SEMESTER RESULTS                                 ");
+        System.out.println("=====================================================================================");
+        System.out.println("     NAME : "+lastName+"."+firstName
+        +"\n     IDNUMBER : "+idNumber);
+        
+    }
+}
+class STUDENT extends PERSON{
+    //property.
+    private int[] testScores;
+    //Constructor.
+    STUDENT(String firstName, String lastName, int idNumber, int[] testScores){
+        super(firstName,lastName,idNumber);
+        this.testScores = testScores;
+    }
+    //Calculate the average score.
+    public char calculate(){
+        int average = 0;
+        for(int i=0; i<testScores.length; i++){
+            average += testScores[i];   // average = average + testScores[i];
+        }
+        average = average / testScores.length;
+//print the GRADE by using conditional statements.
+       if(average >= 90){
+         return 'O';
+      }
+       else if(average >= 80){
+           return 'A';
+      }
+       else if(average >= 70){
+           return 'B';
+     }
+       else if(average >= 60){
+           return 'C';
+     }
+     else if(average >= 50){
+           return 'D';
+    }
+    else if(average >=40){
+           return 'E';
+    }
+    else{
+           return 'F';
+    }
+} 
+}
+class Students_Mark_Sheet_Printer_Using_JAVA_OOP{
+    public static void main(String[] args){
+        //Read and Store all values from the user to the declared variable.
+        Scanner sc = new Scanner(System.in);
+        System.out.print("How many mark statements do you want to print : ");
+        int n = sc.nextInt();
+        for(int j=1; j<=n; j++){
+        System.out.print("Enter your FIRST NAME : ");
+        String firstName = sc.next();
+        System.out.print("Enter your LAST NAME : ");
+        String lastName = sc.next();
+        System.out.print("Enter your ID NUMBER : ");
+        int idNumber = sc.nextInt();
+        System.out.print("Enter the NUMBER OF SUBJECTS : ");
+        int numsub = sc.nextInt();
+     
+     // Read the TESTSCORES into array.
+     int[] testScores = new int[numsub];
+     
+     for(int i=0; i<numsub; i++){
+         System.out.print("Enter your mark that you scored in Subject "+(i + 1)+" : ");
+         testScores[i] = sc.nextInt();
+     }
+     STUDENT s = new STUDENT(firstName, lastName, idNumber, testScores);
+     //print NAME,ID,GRADE.
+     s.printPERSON();
+     System.out.println("     GRADE : "+s.calculate());
+     
+     System.out.println("-------------------------------Subject--Wise--Marks----------------------------------");
+     for(int i=0; i<testScores.length; i++){
+         System.out.println("     SUBJECT "+(i + 1)+" = "+ testScores[i]);
+     }
+     System.out.println("=====================================================================================");
+     System.out.println("     NOTE :"    
+     +"\n     O = Excelent."
+     +"\n     A = Very Good(Keep Rocking)."
+     +"\n     B = Good(keep trying)."
+     +"\n     C = Enough(Need more practice)."
+     +"\n     D = Poor(Worst Performance)."
+     +"\n     E = Very Poor(Worst Performance). "
+     +"\n     F = Fail(Must Study Everyday).");
+     System.out.println("                    THANKYOU                  ");
+     System.out.println("                                         ");
+     System.out.println("                                                           *********      ");
+     System.out.println("                                                    SIGNATURE OF PRINCIPAL");
+     System.out.println("=====================================================================================");
+        }
+  }
+}
